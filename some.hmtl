@@ -1,0 +1,643 @@
+<apex:page id="thePage" StandardController="APTS_Chapter_SubChapter__c" extensions="APTS_ChapterController" docType="html-5.0" sidebar="false" showHeader="false" >
+   <html>
+   <head>
+   <title>ChapterPage</title>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous" />
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+<style>
+.rich-tab-active
+{
+border-bottom: #00A3DB 4px solid !important;
+background-image: none;
+    background-color: #ffffff;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.rich-tab-inactive {
+background-image: none;
+    background-color: #ffffff;
+    font-weight: bold;
+    font-size: 14px;
+    color: #929292;
+
+}
+
+.Custom54Tab .listViewport .subNav .linkBar, .Custom54Tab .mComponent .cHeader, .Custom54Tab .genericTable, .Custom54Tab .bSubBlock, .Custom54Tab .bPageBlock {
+    border-top: 3px solid transparent;
+}
+
+.Custom54Tab .secondaryPalette, .individualPalette .Custom54Block .secondaryPalette
+{
+border-color: transparent;
+}
+
+body .bPageBlock, body #bodyCell .bResource .secondaryPalette, body .secondaryPalette.bPageBlock, body .individualPalette .secondaryPalette.bPageBlock, body .bodyDiv .genericTable, body .genericPageBlockTable, body .bodyDiv .bSubBlock, body .bComponentBlock .bPageBlock, body .bMyDashboard .bPageBlock, body.rlHoverFrame .bPageBlock, body.subjectSelectionPopup div.choicesBox, body.lookupTab .secondaryPalette.bPageBlock, body.popupTab .secondaryPalette.bPageBlock, body.UserTagStatsPage .secondaryPalette.bPageBlock
+{
+background-color: #fff;
+}
+
+.btc-btn
+{
+font-size: 11px !important;
+    padding: 10px 20px !important;
+    border-radius: 4px !important;
+    background: none !important;
+    background-color: #00A3DB !important;
+    display: inline-block !important;
+    position: relative !important;
+    color: #fff !important;
+    border: none !important;
+}
+
+.rich-tabpanel-content
+{
+background-color: #fff;
+border-bottom-color: #fff;
+    border-right-color: #fff;
+    border-left-color: #fff;
+}
+
+.rich-tabhdr-side-cell
+{
+border-top: #fff;
+}
+
+body .bPageBlock, body #bodyCell .bResource .secondaryPalette, body .secondaryPalette.bPageBlock, body .individualPalette .secondaryPalette.bPageBlock, body .bodyDiv .genericTable, body .genericPageBlockTable, body .bodyDiv .bSubBlock, body .bComponentBlock .bPageBlock, body .bMyDashboard .bPageBlock, body.rlHoverFrame .bPageBlock, body.subjectSelectionPopup div.choicesBox, body.lookupTab .secondaryPalette.bPageBlock, body.popupTab .secondaryPalette.bPageBlock, body.UserTagStatsPage .secondaryPalette.bPageBlock
+{
+border-bottom: 1px solid #fff;
+    border-left: 1px solid #fff;
+    border-right: 1px solid #fff;
+}
+
+.rich-tabpanel-content-position {
+    height: 100%;
+    position: relative;
+    margin-top: 13px;
+    }
+
+.rich-tabhdr-side-border
+{
+background-image: none;
+}
+
+.no-padding
+{
+padding: 0 !important;
+}
+
+.col-lg-4
+{
+width: 31.333% !important;
+}
+
+.label-c
+{
+    font-size: 13px;
+    display: inline-block;
+    text-align: right;
+    font-weight: bold;
+    vertical-align: top;
+    margin-right: 12px;
+}
+
+.curtype
+{
+text-align: right;
+float: right;
+top: 5px;
+position: relative;
+}
+
+.aptShoppingCartBtn {
+    background: url("img/cart-delight.png") no-repeat center center;   
+    color:#FFF;    
+}
+.aptSmallbasket {
+    background: url("img/cart-delight.png") no-repeat center center;
+    color:#000;   
+}
+
+#idCommandButtonsSection{
+    text-align: center;
+
+}
+.apt-tab {
+    color:#ffffff;
+    padding:7px 20px 12px 15px;
+    float:left;
+}
+.apt-active-tab {
+    background:#ffffff;
+    color:#324960;
+}
+.apt-powered-logo:before{
+    content: " ";
+    position: relative;
+    width: 1px;
+    margin: 0 10%;
+    background: #cccccc;
+    float: left;
+    height: 26px;
+    top: 1px;
+}
+ .leftPageButtons::after, .apt-bottom-btn-divider:before{
+    content: " ";
+    position: relative;
+    width: 1px;
+    margin: 0 15px;
+    background: #cccccc;
+    display: inline-block;
+    vertical-align: middle;
+    height: 26px;
+    top: -1px;
+}
+.apt-powered-logo {
+    float: right;
+}
+
+.input-append, .input-prepend {
+    margin-top: 0px;
+    display:block;
+    float:left;
+}
+
+.idCommands{    
+    position:fixed;
+    bottom:0;
+    width:100%;
+    border-top: 1px solid #eaeaea;
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.25);
+    -moz-box-shadow:    0px 0px 10px 0px rgba(0,0,0,0.25);
+    box-shadow:         0px 0px 10px 0px rgba(0,0,0,0.25);
+}
+
+ul.pageButtons{ 
+    list-style: none;
+    display: inline;
+}
+
+a.aptListButton {
+    border: none !important;
+    outline:none;
+    cursor: pointer;
+    color: #000000 !important;
+    border: 1px solid #E2E2E2 !important;
+    background: #F8F8F8 !important;
+    background-color: #F8F8F8 !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    filter:none !important;
+}
+.aptListButton[disabled=disabled]{
+    color:#BBBBBB !important;
+    background: #FFFFFF !important;
+    background-color: #FFFFFF !important;
+    cursor:default !important;
+    filter:none !important;
+}
+.aptListButton:hover {
+    border: none !important;
+    outline:none;
+    cursor: pointer;
+    color: #ffffff !important;
+    border: 1px solid #E2E2E2 !important;
+    background: #2093D9 !important;
+    background-color: #2093D9 !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border-radius:2px !important;
+    filter:none !important;
+}
+.aptListButton {
+    margin:0;
+}
+.pageButtons{
+    margin: 0;
+    padding: 0;
+}
+a.aptMoreButton{
+    background:#F8F8F8 url("img/black-up-arrow.png") 60px center no-repeat !important;
+}
+a.aptMoreButton:hover{
+    background:#2093D9 url("img/white-up-arrow.png") 60px center no-repeat !important;
+}
+a.apt-left-btn{
+    background:#F8F8F8 url("img/black-left-arrow.png") left 5px center no-repeat !important;
+}
+a.apt-left-btn:hover{
+    background:#2093D9 url("img/white-left-arrow.png") left 5px center no-repeat !important;
+}
+a.apt-right-btn{
+    background:#F8F8F8 url("img/black-right-arrow.png") right 5px center no-repeat !important;
+}
+a.apt-right-btn:hover{
+    background:#2093D9 url("img/white-right-arrow.png") right 5px center no-repeat !important;
+}
+.rightPageButtons{
+    float: right;;
+}
+.leftPageButtons{
+    float: left;
+}
+.centerPageButtons{
+    display: inline-block;
+    width: auto !important;
+    float: none !important;
+}
+.apt-list-dropdown .aptListButton {
+    border:none !important;
+    font-size:15px !important;
+    padding:7px 15px 9px 15px !important;
+    display:block !important;
+    line-height:12px;
+    color:#0061b2;
+    text-align:left;
+    background:#ffffff !important;
+    width:auto;
+}
+.apt-list-dropdown .aptListButton:hover {
+    background: #2093D9 !important;
+    border:none !important;
+    font-size:15px !important;
+    padding:7px 15px 9px 15px !important;
+    display:block !important;
+    line-height:12px;
+    text-align:left;
+    width:auto;
+}
+.aptListButton[disabled=disabled]:hover{
+    color:#BBBBBB !important;
+    background: #FFFFFF !important;
+    background-color: #FFFFFF !important;
+    cursor:default !important;
+    filter:none !important;
+}
+.aptButtonDisabled {
+    color: #BBBBBB !important;
+    background: #FFFFFF !important;
+    cursor: default !important;
+}
+.aptButtonDisabled:hover {
+    color: #BBBBBB !important;
+    background: #FFFFFF !important;
+    cursor: default !important;
+}
+
+.apt-cartPage .apt-moreDropDown:before{
+    top:auto !important;
+    position: absolute !important;
+    bottom: -7px !important;
+    left: 60px !important;
+    display: inline-block !important;
+    border-bottom: none;
+    border-right: 7px solid transparent !important;
+    border-top: 7px solid #ffffff !important;
+    border-bottom: none !important;
+    border-left: 7px solid transparent !important;
+    content: '';
+}
+.apt-cartPage .apt-moreDropDown{
+    top: auto !important;
+    bottom: 100% !important;
+}
+
+.cartTopContainer {
+    width:100%;
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    -moz-box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 1.0);
+    -webkit-box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 1.0);
+    box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 1.0);
+}
+.taskPageButtons li{
+    margin:0;
+    padding:0;
+    
+}
+.cartTable {
+    width: 100%; 
+    background:#2A94D6;
+    line-height:30px;
+    padding:3px 0;
+    -moz-box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 1.0);
+    -webkit-box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 1.0);
+    box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 1.0);
+    border:none;
+}
+.cartTable .apt-quote-panel{
+    float:left;
+    margin-left:10px;
+}
+.cartTable .apt-aprroval-panel:before, .apt-mini-cart-panel:before, #apt-catalogLinks li:before{    
+    background:#ffffff; 
+}
+.cartTable, .cartTable a{
+    color:#ffffff;
+}
+.apt-mini-cart-panel {
+    right: 8px;
+}
+.apt-cartDropDown {
+    position: absolute;
+    top: 35px;
+}
+.approvalText {
+    background: none !important;
+}
+.approvalIcon {
+    height: 20px;
+    vertical-align:middle; 
+    padding-left:6px;
+    width: 16px;
+    display: inline-block;
+}
+#apt-miniCartPanel{
+}
+#apt-catalogLinks li a{
+    color: #ffffff;
+}
+.cartTable .taskPageButtons{
+    color:#000000;
+}
+#rootMenuContainer{
+    background-color: #324960;
+}
+.navbar-inner {
+    min-height: 0;
+    padding-left: 0;
+    padding-right: 0;
+    background-color: #324960;
+    background-image: none;
+    background-repeat: repeat-x;
+    filter: none;
+    border: none;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    -webkit-box-shadow: 0;
+    -moz-box-shadow: 0;
+    box-shadow: 0;
+}
+#apt-BrowseCatalogOr{
+    color:#ffffff;
+}
+.apt-tab {
+    color: #ffffff;
+}
+.apt-cart-head-label {
+    color: #ffffff !important;
+    font-weight: normal;
+    padding-left: 6px;
+}
+.cartTable .apt-mini-cart-panel {
+    right: 8px;
+}
+.cartTable{
+    position: fixed;
+    top:0;
+    z-index:1000;
+}
+.idCommands{
+    background:#EDEFF0;
+    padding:5px 5px 18px;
+    position:fixed;
+    bottom:0;
+    z-index: 2;
+}
+#idCommandButtonsSection .apt-powered-logo{
+    display: block;
+}
+
+
+.columnview {
+  overflow-y: scroll;
+  height: 100%;
+  width: 220px;
+  float: left;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.columnview li.ui-state-active {
+    background: #428BCA !important;
+    color:#ffffff !important;
+}
+
+.columnview li {
+  width: 100%;
+  white-space: nowrap;
+  position: relative;
+  padding: 2px 0 2px 0px;
+  font-size: 14px;
+}
+.columnview li:hover {
+  cursor: pointer;
+  background-color: #428BCA;
+  color:#ffffff;
+}
+li.apt-nonleaf-node:hover:before {
+    border-left-color: #ffffff;
+    
+}
+li.apt-nonleaf-node:before {
+    content: '';
+    border: 5px solid transparent;
+    border-left-color: #0061b2;
+    top: 5px;
+    right: 2px;
+    z-index: 2;
+    position: absolute;
+    
+}
+li.ui-state-active:before {
+    border-left-color: #ffffff;
+}
+.apt-browseCatalogDropDown{
+    height:500px;
+    font-size: inherit;
+}
+
+.cartTable
+{
+height: 33px;
+}
+
+.Custom69Tab .secondaryPalette, .individualPalette .Custom69Block .secondaryPalette
+{
+border-color: #fff;
+}
+</style>
+</head>
+ <apex:form id="theForm">
+  
+    <body>
+     <!-- Top header section bar ###Start### here-->
+                
+        <div class="apt-page-header cartTable clearfix" style="padding:0px; background:#00A2DF!important">
+            
+            <div class="apt-quote-panel apt-pull-left" style="margin-left:0px!important; margin-top:2px">
+                <span class="apt-cart-head-label" style="font-size: 14px;">
+               <a href="/{!proposalList[0].id}" style='text-decoration:none !important;'>
+                  <span class="apt-location-text apt-cart-head-label"  style='font-size: 14px; text-decoration:underline;'>Proposal: {!proposalList[0].Name}</span><span class="glyphicon glyphicon-triangle-bottom" style='color: white;'></span></a></span>  
+            </div>
+            <div class="SearchFixHeader" style="width:100%;line-height:0">
+                <div id="searchParams">
+                    <div style="height: 4px;padding-top: 10px;width: 0%;border-bottom:3px solid #fff" id="progressbarcustom"></div>                         
+                </div>
+            </div>
+        </div>
+        <!-- Top header section bar ###End### here --> 
+               <div class="row">
+                       <div style="width: 1.5%;min-height: 500px;float: left;"></div>
+                <div style="width: 97%;min-height: 500px;float: left;"> 
+
+                    
+
+         <apex:tabPanel switchType="client" selectedTab="name2" id="theTabPanel" headerspacing="30px" style="margin-top: 4%">
+    <apex:tab label="Manage Chapter" name="Manage Chapter" id="ManageChapterTab"> 
+     <apex:pageBlock >
+        <!-- <apex:pageBlockSection columns="1" collapsible="false">  -->
+             <div class="col-lg-12 no-padding" >
+         <div class="row">
+              <div class="col-lg-6 no-padding"  style="display: inline-block">
+              <div class="form-group" style="margin-bottom: 10px;">
+            <label class="col-md-3 no-padding control-label label-c" for="textinput">Chapter #</label> 
+          <div class="col-md-5 no-padding" style="font-size: 12px; display: inline-block">
+              <apex:inputField styleClass="form-c3ontrol" style="font-size: 12px; height: 30px;" value=" {!APTS_Chapter_SubChapter__c.APTS_Chapter__c}"/> 
+          </div>
+          </div>
+                <div class="form-group" style="margin-bottom: 10px;">
+          <label class="col-md-3 no-padding control-label label-c" for="textinput">Chapter Name</label> 
+          <div class="col-md-5 no-padding" style="font-size: 12px; display: inline-block">
+              <apex:inputField styleClass="form-control" style="font-size: 12px; height: 30px;" value=" {!APTS_Chapter_SubChapter__c.APTS_Chapter_Name__c}"/> 
+          </div>
+        </div>          
+                <div class="form-group" style="margin-bottom: 10px;">
+          <label class="col-md-3 no-padding control-label label-c" for="textinput">&nbsp;</label> 
+          <div class="col-md-5 no-padding" style="font-size: 12px; display: inline-block">
+                     <apex:commandButton styleClass="btc-btn" value="Add" action="{!addChapter}" reRender="thePageBlock,chapterPickList"/>   
+          </div>
+        </div>          
+        
+      
+          </div>
+    <div class="col-lg-6 no-padding" style="display: inline-block" id="subChapterId">
+               <div class="form-group" style="margin-bottom: 10px;">
+          <label class="col-md-3 no-padding control-label label-c" for="textinput">Chapter Name</label> 
+          <div class="col-md-5 no-padding" style="font-size: 12px; display: inline-block">
+            <apex:selectList id="chapterPickList" value="{!strSelectedList}" styleClass="form-control"  multiselect="true" size="3" >
+             <apex:selectOptions value="{!options}"/>
+             </apex:selectList>
+          </div>
+        </div>
+              <div class="form-group" style="margin-bottom: 10px;">
+          <label class="col-md-3 no-padding control-label label-c" for="textinput">Sub-Chapter #</label> 
+          <div class="col-md-5 no-padding" style="font-size: 12px; display: inline-block">
+              <apex:inputField styleClass="form-control" style="font-size: 12px; height: 30px;" value="{!APTS_Chapter_SubChapter__c.APTS_Sub_Chapter__c}"/> 
+          </div>
+        </div>
+            <div class="form-group" style="margin-bottom: 10px;">
+          <label class="col-md-3 no-padding control-label label-c" for="textinput">Sub-Chapter Name</label> 
+          <div class="col-md-5 no-padding" style="font-size: 12px; display: inline-block">
+              <apex:inputField styleClass="form-control" style="font-size: 12px; height: 30px;" value=" {!APTS_Chapter_SubChapter__c.APTS_Sub_Chapter_Name__c}"/> 
+          </div>
+        </div>
+        
+          <div class="form-group" style="margin-bottom: 10px;">
+          <label class="col-md-3 no-padding control-label label-c" for="textinput">&nbsp;</label> 
+          <div class="col-md-5 no-padding" style="font-size: 12px; display: inline-block">
+                  <apex:commandButton styleClass="btc-btn" value="Add" action="{!addSubChapter}" reRender="thePageBlock,chapterPickList"  /> 
+          </div>
+    
+        </div>                
+       
+              </div>                   
+              </div> 
+              </div>
+     
+    <!--</apex:pageBlockSection>-->
+      
+           </apex:pageBlock>
+         <!--- JavaScript ,jquery code for drag and drop the records which are in below pageBlockTable-->
+		 
+         <apex:stylesheet value="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css"/>
+         <apex:includeScript value="//code.jquery.com/jquery-1.10.2.js"/>
+         <apex:includeScript value="//code.jquery.com/ui/1.11.2/jquery-ui.js"/>
+         <apex:includescript value="/soap/ajax/21.0/connection.js"> </apex:includescript>
+        <apex:includescript value="/soap/ajax/21.0/apex.js"> </apex:includescript>
+          <script>
+             
+           var j$ = jQuery.noConflict();
+            j$(document).ready(function(){
+              j$(document.getElementById("{!$Component.theForm.thePageBlock.theTable}")).find("tbody").sortable({
+                update: function(event,ui)
+                {
+                  j$(document.getElementById("{!$Component.theForm.thePageBlock.theTable}")).find("tbody tr").each(function(){
+                      console.log(parseInt(j$(this)));
+                     var result = j$(this).children('td:last-child').html(parseInt(j$(this).index())+1);
+                     console.log(result);
+                                               
+                  })   
+                  
+                }
+              });
+            });
+        </script>
+         <!--JavaScript code ends here--->
+         <div style="overflow-y: scroll; height: 250px;">  
+        <apex:variable value="{!chapters[0].APTS_Sequence__c}" var="index"/>
+        <apex:variable var="rowNum" value="{!0}"  />
+		
+		<!--pageBlockTable starts here-->
+         <apex:pageBlock id="thePageBlock" >
+         
+         <apex:variable var="rowNum" value="{!0}"  />
+         <apex:pageBlockTable value="{!chapters}" var="chap" id="theTable" cellPadding="5px">
+         <apex:column headervalue="Delete">
+       
+          <apex:commandLink style="font-size:15px;" value="Del" action="{!deleteChapter}" reRender="thePageBlock,chapterPicklist">
+                        <apex:param value="{!rowNum}" name="rowind" />
+                    </apex:commandLink>
+                    <apex:variable var="rowNum" value="{!rowNum+1}"/>
+     </apex:column>
+      <apex:column headervalue="Edit">
+       
+          <apex:commandLink style="font-size:15px;" value="Edit" action="{!editChapter}" >
+                        <apex:param value="{!rowNum-1}" name="rowind" />
+                    </apex:commandLink>
+     </apex:column>
+           <apex:column value="{!chap.APTS_Chapter__c}" style="font-size:15px"/>
+          <apex:column value="{!chap.APTS_Chapter_Name__c}" style="font-size:15px"/>
+          <apex:column value="{!chap.APTS_Sub_Chapter__c}" style="font-size:15px"/>
+          <apex:column value="{!chap.APTS_Sub_Chapter_Name__c }" style="font-size:15px"/>
+          <apex:column id="seq" value="{!chap.APTS_Sequence__c}"  style="font-size:15px"/>
+          <!-- <apex:column >
+        <apex:outputText >
+        <apex:variable value="{!chap.APTS_Sequence__c}" var="index"/>
+        {!index}
+        </apex:outputText>
+        
+          <apex:column />-->
+              </apex:pageBlockTable>
+        </apex:pageBlock>
+		<!---pageBlockTable ends here-->
+		
+        </div>
+       <div style="text-align: center">
+      <apex:commandButton value="Save" styleClass="btc-btn" action="{!save}"/> 
+       <apex:param name="chapterId" value="" assignTo="{!theTable}"/>
+       </div>
+       <apex:actionFunction name="updateOrder" action="{!updateSortOrder}" rerender="thePageBlock">
+       <apex:param name="chapterId" value=""/>
+       <apex:param name="target" value=""/>
+       </apex:actionFunction>
+        </apex:tab>
+    </apex:tabPanel>
+    </div>
+    </div>
+      </body>
+    </apex:form>
+    </html>
+</apex:page>
